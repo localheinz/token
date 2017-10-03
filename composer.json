@@ -1,0 +1,35 @@
+{
+  "name": "localheinz/token",
+  "description": "Provides a simple abstraction for a token and a sequence of tokens.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andreas Möller",
+      "email": "am@localheinz.com"
+    }
+  ],
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "require": {
+    "php": "^7.0"
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "0.4.4",
+    "localheinz/php-cs-fixer-config": "~1.6.2",
+    "localheinz/test-util": "0.2.2",
+    "phpunit/phpunit": "^6.3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Localheinz\\Token\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Localheinz\\Token\\Test\\": "test/"
+    }
+  }
+}
