@@ -58,6 +58,31 @@ var_dump($token->index()); // 10
 var_dump($token->isType(T_PUBLIC)); // true
 var_dump($token->isContent('public')); // true
 ```
+Retrieve the next significant token before an index in the sequence of tokens:
+
+```php
+use Localheinz\Token\Token;
+
+/** @var Token $before */
+$before = $sequence->significantBefore(10);
+
+var_dump($before->index()); // 6
+var_dump($before->isType(T_STRING)); // true
+var_dump($before->isContent('{')); // true
+```
+
+Retrieve the next significant token after an index in the sequence of tokens:
+
+```php
+use Localheinz\Token\Token;
+
+/** @var Token $after */
+$after = $sequence->significantAfter(10);
+
+var_dump($after->index()); // 12
+var_dump($after->isType(T_FUNCTION)); // true
+var_dump($after->isContent('function')); // true
+```
 
 ## Contributing
 
