@@ -77,6 +77,42 @@ final class Sequence implements \Countable
     }
 
     /**
+     * Returns the next significant token in the token sequence before the index.
+     *
+     * @param int $index
+     *
+     * @throws Exception\IndexOutOfBounds
+     * @throws Exception\NoSignificantTokenFound
+     *
+     * @return Token
+     */
+    public function significantBefore(int $index): Token
+    {
+        return $this->significantIn(
+            self::DIRECTION_BACKWARD,
+            $index
+        );
+    }
+
+    /**
+     * Returns the next significant token in the token sequence after the index.
+     *
+     * @param int $index
+     *
+     * @throws Exception\IndexOutOfBounds
+     * @throws Exception\NoSignificantTokenFound
+     *
+     * @return Token
+     */
+    public function significantAfter(int $index): Token
+    {
+        return $this->significantIn(
+            self::DIRECTION_FORWARD,
+            $index
+        );
+    }
+
+    /**
      * Returns the number of tokens in the sequence.
      *
      * @return int
@@ -96,5 +132,39 @@ final class Sequence implements \Countable
     private function isOutOfBounds(int $index): bool
     {
         return 0 > $index || $this->count <= $index;
+    }
+
+    /**
+     * Returns the next significant token starting from the index into the direction.
+     *
+     * @param int $direction
+     * @param int $index
+     *
+     * @throws Exception\IndexOutOfBounds
+     * @throws Exception\NoSignificantTokenFound
+     *
+     * @return Token
+     */
+    private function significantIn(int $direction, int $index): Token
+    {
+        if ($this->isOutOfBounds($index)) {
+            throw Exception\IndexOutOfBounds::fromCountAndIndex(
+                $this->count,
+                $index
+            );
+        }
+
+        for ($current = $index + $direction; 0 <= $current && $current < $this->count; $current += $direction) {
+            $token = $this->tokens[$current];
+
+            if (!$token->isType(T_COMMENT, T_DOC_COMMENT, T_WHITESPACE)) {
+                return $token;
+            }
+        }
+
+        throw Exception\NoSignificantTokenFound::in(
+            $direction,
+            $index
+        );
     }
 }
