@@ -17,6 +17,48 @@ Run
 $ composer require localheinz/token
 ```
 
+## Usage
+
+### Sequence of tokens
+
+Create a sequence of tokens from source code:
+
+```php
+use Localheinz\Token\Sequence;
+
+$source = <<<'PHP'
+<?php
+
+class Foo
+{
+    /**
+     * @param Bar $bar
+     */
+    public function __construct(Bar $bar)
+    {
+        $this->bar = $bar;
+    }
+}
+PHP;
+
+$sequence = Sequence::fromSource($source);
+```
+
+### Token in sequence
+
+Retrieve the token at an index in the sequence of tokens:
+
+```php
+use Localheinz\Token\Token;
+
+/** @var Token $token */
+$token = $sequence->at(10);
+
+var_dump($token->index()); // 10
+var_dump($token->isType(T_PUBLIC)); // true
+var_dump($token->isContent('public')); // true
+```
+
 ## Contributing
 
 Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
