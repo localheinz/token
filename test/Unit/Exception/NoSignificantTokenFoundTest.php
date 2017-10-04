@@ -49,8 +49,8 @@ final class NoSignificantTokenFoundTest extends Framework\TestCase
             $index
         );
 
-        $this->assertSame(0, $exception->getCode());
         $this->assertSame($message, $exception->getMessage());
+        $this->assertSame(0, $exception->getCode());
     }
 
     public function providerDirectionAndFormat(): \Generator
