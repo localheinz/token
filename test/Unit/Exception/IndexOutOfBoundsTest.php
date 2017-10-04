@@ -48,5 +48,6 @@ final class IndexOutOfBoundsTest extends Framework\TestCase
         );
 
         $this->assertSame($message, $exception->getMessage());
+        $this->assertSame(0, $exception->getCode());
     }
 }
