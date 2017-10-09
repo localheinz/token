@@ -30,13 +30,7 @@ final class Sequence implements \Countable
 
     private function __construct(array $tokens)
     {
-        $this->tokens = \array_map(function (int $index, $value) {
-            return Token::fromValue(
-                $index,
-                $value
-            );
-        }, \array_keys($tokens), \array_values($tokens));
-
+        $this->tokens = \array_values($tokens);
         $this->count = \count($tokens);
     }
 
@@ -67,6 +61,13 @@ final class Sequence implements \Countable
             throw Exception\IndexOutOfBounds::fromCountAndIndex(
                 $this->count,
                 $index
+            );
+        }
+
+        if (!$this->tokens[$index] instanceof Token) {
+            $this->tokens[$index] = Token::fromValue(
+                $index,
+                $this->tokens[$index]
             );
         }
 
@@ -152,7 +153,7 @@ final class Sequence implements \Countable
         }
 
         for ($current = $index + $direction; 0 <= $current && $current < $this->count; $current += $direction) {
-            $token = $this->tokens[$current];
+            $token = $this->at($current);
 
             if (!$token->isType(T_COMMENT, T_DOC_COMMENT, T_WHITESPACE)) {
                 return $token;
