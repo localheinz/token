@@ -45,9 +45,9 @@ final class Sequence implements \Countable
      *
      * @param string $source
      *
-     * @return Sequence
+     * @return self
      */
-    public static function fromSource(string $source): Sequence
+    public static function fromSource(string $source): self
     {
         return new self(\token_get_all(
             $source,
