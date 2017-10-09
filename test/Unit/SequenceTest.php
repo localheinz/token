@@ -43,6 +43,35 @@ final class SequenceTest extends Framework\TestCase
         $this->assertInstanceOf(Sequence::class, $sequence);
     }
 
+    public function testFromSourceUsesTokenParse()
+    {
+        $source = <<<'PHP'
+<?php
+
+final class Example
+{
+    public function class(): string
+    {
+        return self::class;
+    }
+}
+PHP;
+
+        $sequence = Sequence::fromSource($source);
+
+        $classTokens = [];
+
+        for ($index = 0; $index < $sequence->count(); ++$index) {
+            $token = $sequence->at($index);
+
+            if ($token->isType(T_CLASS)) {
+                $classTokens[] = $token;
+            }
+        }
+
+        $this->assertCount(1, $classTokens);
+    }
+
     public function testCountReturnsNumberOfTokens()
     {
         $source = \file_get_contents(__FILE__);
