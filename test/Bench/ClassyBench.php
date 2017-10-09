@@ -23,7 +23,10 @@ final class ClassyBench
      */
     public function benchTokenGetAllFromSource()
     {
-        \token_get_all($this->source());
+        \token_get_all(
+            $this->source(),
+            TOKEN_PARSE
+        );
     }
 
     /**
