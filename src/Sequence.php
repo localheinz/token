@@ -43,7 +43,10 @@ final class Sequence implements \Countable
      */
     public static function fromSource(string $source): self
     {
-        return new self(\token_get_all($source));
+        return new self(\token_get_all(
+            $source,
+            TOKEN_PARSE
+        ));
     }
 
     /**
