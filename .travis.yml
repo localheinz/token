@@ -5,7 +5,6 @@ sudo: false
 env:
   global:
     - secure: "TnPn7IWK2Vx2DV8EJCrXlYkrnYqBid1r4v0Re7mpfI2FGWGBmMgpDwbLXA54Zq9Mn6LS8rWR8gnUAT29a+t+TkCVKmqwWRPE/lnB+kRcuYjByM15pYX8mIKsdo6dhLUkO+jHhUf/bNmgjG9+m5hLSbw9TE8E9havstwm4tkMrxTiCnrddu2ckX0MVDWV1mu6yk1p+ROFDsoLrzUwwjZfhrrCwm3xgLBE4p1T5JjrMUzgEMMCtFmj3X6LbIEK4QXO5BnO8JFMHcnYrgfuJxqK7PAJAil9RpaqCO+n+8M5ZPgg1RN/Dvs2gFnfBkXkz8GEP/cDZyZVOPqPpGW/k60aVZmXMy6NajxkKuFZgDdMTjQG5tjXznsFme25/Q4vml2t+3a65dsh45qN+nRR+mvvBhsdbdmJgeLUcis2/AlGkgUcQ5cXCPjBHCriL8wGWg6cHPV/dPyHSWuRKWeVZpHmb7ESnZ4+NKiWONL396r2QVvxXoYbVP4elWE2AUIK2USLbWYG7tc5dza5jC1I5HkzbLfYnm+IaAU9W639XsNNoluBis2r9vP7ka0p0mDt7bqReOMMthGR3SHLM/2/n8AEt9eXJqehReU01z1Rw65jYvgjwSTro3OckMX6LLYn2UVo7QYQmT4ABCc6E8J6YLVa/njpuIfdHwOeapSF2hOQha0="
-    - secure: "OTAuy1JXD7ADeNORGZNJqptN/x5hPCVHUlH3zgt4Y78uCvR8X1cBJ+cFTAfGgX6xP6gXN8lOU6oTZBH6cYpvsAYz2BMLPK0I3xb3+opX/n+U66eSVpjdI5gJ52QwVWHBKoAIkxSOC19tAW6aZeg/nvOjsJquQi+dAimtBO36KWzxi8ytplGCOJcvdh2+MRrMD+TfbTlsc+KJQsjWbUXt7t7kPygLP14L/E5mAv4f5d6sCl6QaR3WtfjIkWqsXVuH8Qv1Uxo7wcmNJyuxDC7YHcCvA8yBw+5RbMLtTYBMoX3USrud5FOi0g79OZBmsef2JM5qSkrMzJyyoP94niLoKj4I8NWtQSMrQ4la9tq7fC48AY3f5eqGi7/HcEv5zr7IpCrswjzpWdx3CvsKHgcZYlmsNzmfOkqttpLOLsdJtIVn8VGYX2N0+wpWiLme2pNeg9Cw0yTRFeCzdxXW/4WgiQmgFd2sq7EopVZbyBq2mXDjJhuJiuS0fd2VlsN0R2j/bJiBxjAAZq/1VVOAcaOYPSOAo6r/KYDHHSTbUFd2XF152gNmDnQRpJ2ugvqML9YAskCexx3tRW/JaYx5LUBZBWig2dCUgRfL2eg6yOevZbZvCFaSbpS7J3UKrtyWHyhkLyPfik1afVL8teLtfye6I8IaNrcdtanF5VG/OnUiG/Q="
 
 cache:
   directories:
@@ -63,7 +62,7 @@ jobs:
         - if [[ "$WITH_COVERAGE" == "true" ]]; then xdebug-disable; fi
 
       after_success:
-        - if [[ "$WITH_COVERAGE" == "true" && -n "$CODECLIMATE_REPO_TOKEN" ]]; then vendor/bin/test-reporter --coverage-report=build/logs/clover.xml; fi
+        - if [[ "$WITH_COVERAGE" == "true" ]]; then bash <(curl -s https://codecov.io/bash); fi
 
     - <<: *TEST
 

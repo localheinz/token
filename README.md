@@ -1,9 +1,7 @@
 # token
 
 [![Build Status](https://travis-ci.org/localheinz/token.svg?branch=master)](https://travis-ci.org/localheinz/token)
-[![Code Climate](https://codeclimate.com/github/localheinz/token/badges/gpa.svg)](https://codeclimate.com/github/localheinz/token)
-[![Test Coverage](https://codeclimate.com/github/localheinz/token/badges/coverage.svg)](https://codeclimate.com/github/localheinz/token/coverage)
-[![Issue Count](https://codeclimate.com/github/localheinz/token/badges/issue_count.svg)](https://codeclimate.com/github/localheinz/token)
+[![codecov](https://codecov.io/gh/localheinz/token/branch/master/graph/badge.svg)](https://codecov.io/gh/localheinz/token)
 [![Latest Stable Version](https://poser.pugx.org/localheinz/token/v/stable)](https://packagist.org/packages/localheinz/token)
 [![Total Downloads](https://poser.pugx.org/localheinz/token/downloads)](https://packagist.org/packages/localheinz/token)
 
