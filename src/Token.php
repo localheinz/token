@@ -8,7 +8,7 @@ declare(strict_types=1);
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  *
- * @link https://github.com/localheinz/token
+ * @see https://github.com/localheinz/token
  */
 
 namespace Localheinz\Token;
@@ -75,7 +75,7 @@ final class Token
     /**
      * Returns a new token from index in the token sequence, and a value returned by token_get_all().
      *
-     * @link http://php.net/manual/en/function.token-get-all.php
+     * @see http://php.net/manual/en/function.token-get-all.php
      *
      * @param int          $index
      * @param array|string $value
@@ -113,7 +113,7 @@ final class Token
     /**
      * Returns the type of the token.
      *
-     * @link http://php.net/manual/en/tokens.php
+     * @see http://php.net/manual/en/tokens.php
      *
      * @return int
      */
