@@ -1,7 +1,8 @@
 {
   "name": "localheinz/token",
-  "description": "Provides a simple abstraction for a token and a sequence of tokens.",
   "type": "library",
+  "description": "Provides a simple abstraction for a token and a sequence of tokens.",
+  "homepage": "https://github.com/localheinz/token",
   "license": "MIT",
   "authors": [
     {
@@ -9,10 +10,6 @@
       "email": "am@localheinz.com"
     }
   ],
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
   "require": {
     "php": "^7.0"
   },
@@ -23,6 +20,10 @@
     "phpbench/phpbench": "~0.14.0",
     "phpunit/phpunit": "^6.5.5"
   },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
   "autoload": {
     "psr-4": {
       "Localheinz\\Token\\": "src/"
@@ -32,5 +33,9 @@
     "psr-4": {
       "Localheinz\\Token\\Test\\": "test/"
     }
+  },
+  "support": {
+    "issues": "https://github.com/localheinz/token/issues",
+    "source": "https://github.com/localheinz/token"
   }
 }
