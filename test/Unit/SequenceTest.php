@@ -251,7 +251,7 @@ PHP;
             ],
         ];
 
-        foreach ($values as $key => list($index, $indexSignificantBefore)) {
+        foreach ($values as $key => [$index, $indexSignificantBefore]) {
             yield $key => [
                 $source,
                 $index,
@@ -390,7 +390,7 @@ PHP;
             ],
         ];
 
-        foreach ($values as $key => list($index, $indexSignificantAfter)) {
+        foreach ($values as $key => [$index, $indexSignificantAfter]) {
             yield $key => [
                 $source,
                 $index,

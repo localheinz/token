@@ -85,7 +85,7 @@ final class Token
     public static function fromValue(int $index, $value): self
     {
         if (\is_array($value)) {
-            list($type, $content) = $value;
+            [$type, $content] = $value;
 
             return self::fromTypeAndContent(
                 $index,
