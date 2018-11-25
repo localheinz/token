@@ -107,7 +107,7 @@ final class TokenTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($value, $expected)) {
+        foreach ($values as $key => [$value, $expected]) {
             yield $key => [
                 $index,
                 $value,

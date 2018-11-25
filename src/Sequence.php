@@ -15,8 +15,8 @@ namespace Localheinz\Token;
 
 final class Sequence implements \Countable
 {
-    const DIRECTION_FORWARD = 1;
-    const DIRECTION_BACKWARD = -1;
+    public const DIRECTION_FORWARD = 1;
+    public const DIRECTION_BACKWARD = -1;
 
     /**
      * @var Token[]

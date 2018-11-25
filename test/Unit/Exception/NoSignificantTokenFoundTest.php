@@ -68,7 +68,7 @@ final class NoSignificantTokenFoundTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($direction, $format)) {
+        foreach ($values as $key => [$direction, $format]) {
             yield $key => [
                 $direction,
                 $format,
