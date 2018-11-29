@@ -17,6 +17,9 @@ use Localheinz\Test\Util\Helper;
 use Localheinz\Token\Token;
 use PHPUnit\Framework;
 
+/**
+ * @internal
+ */
 final class TokenTest extends Framework\TestCase
 {
     use Helper;
@@ -26,7 +29,7 @@ final class TokenTest extends Framework\TestCase
         $faker = $this->faker();
 
         $index = $faker->randomNumber();
-        $type = T_STRING;
+        $type = \T_STRING;
         $content = $faker->sentence();
 
         $token = Token::fromTypeAndContent(
@@ -35,11 +38,11 @@ final class TokenTest extends Framework\TestCase
             $content
         );
 
-        $this->assertInstanceOf(Token::class, $token);
+        self::assertInstanceOf(Token::class, $token);
 
-        $this->assertSame($index, $token->index());
-        $this->assertSame($type, $token->type());
-        $this->assertSame($content, $token->content());
+        self::assertSame($index, $token->index());
+        self::assertSame($type, $token->type());
+        self::assertSame($content, $token->content());
     }
 
     public function testFromStringReturnsToken()
@@ -54,11 +57,11 @@ final class TokenTest extends Framework\TestCase
             $content
         );
 
-        $this->assertInstanceOf(Token::class, $token);
+        self::assertInstanceOf(Token::class, $token);
 
-        $this->assertSame($index, $token->index());
-        $this->assertSame(T_STRING, $token->type());
-        $this->assertSame($content, $token->content());
+        self::assertSame($index, $token->index());
+        self::assertSame(\T_STRING, $token->type());
+        self::assertSame($content, $token->content());
     }
 
     /**
@@ -75,7 +78,7 @@ final class TokenTest extends Framework\TestCase
             $value
         );
 
-        $this->assertEquals($expected, $token);
+        self::assertEquals($expected, $token);
     }
 
     public function providerFromValue(): \Generator
@@ -83,7 +86,7 @@ final class TokenTest extends Framework\TestCase
         $faker = $this->faker();
 
         $index = $faker->randomNumber();
-        $type = T_STRING;
+        $type = \T_STRING;
         $content = $faker->sentence();
 
         $values = [
@@ -122,13 +125,13 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $faker->sentence()
         );
 
-        $type = T_CLASS;
+        $type = \T_CLASS;
 
-        $this->assertFalse($token->isType($type));
+        self::assertFalse($token->isType($type));
     }
 
     public function testIsTypeReturnsFalseIfAllTypesAreDifferent()
@@ -137,17 +140,17 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $faker->sentence()
         );
 
         $types = [
-            T_CLASS,
-            T_INTERFACE,
-            T_TRAIT,
+            \T_CLASS,
+            \T_INTERFACE,
+            \T_TRAIT,
         ];
 
-        $this->assertFalse($token->isType(...$types));
+        self::assertFalse($token->isType(...$types));
     }
 
     public function testIsTypeReturnsTrueIfTypeIsSame()
@@ -156,13 +159,13 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $faker->sentence()
         );
 
-        $type = T_STRING;
+        $type = \T_STRING;
 
-        $this->assertTrue($token->isType($type));
+        self::assertTrue($token->isType($type));
     }
 
     public function testIsTypeReturnsTrueIfOneTypeIsSame()
@@ -171,18 +174,18 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $faker->sentence()
         );
 
         $types = [
-            T_CLASS,
-            T_INTERFACE,
-            T_STRING,
-            T_TRAIT,
+            \T_CLASS,
+            \T_INTERFACE,
+            \T_STRING,
+            \T_TRAIT,
         ];
 
-        $this->assertTrue($token->isType(...$types));
+        self::assertTrue($token->isType(...$types));
     }
 
     public function testIsContentReturnsFalseIfContentIsDifferent()
@@ -191,13 +194,13 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $faker->sentence()
         );
 
         $content = $faker->sentence();
 
-        $this->assertFalse($token->isContent($content));
+        self::assertFalse($token->isContent($content));
     }
 
     public function testIsContentReturnsFalseIfAllContentsAreDifferent()
@@ -206,7 +209,7 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $faker->sentence()
         );
 
@@ -216,7 +219,7 @@ final class TokenTest extends Framework\TestCase
             $faker->sentence(),
         ];
 
-        $this->assertFalse($token->isContent(...$contents));
+        self::assertFalse($token->isContent(...$contents));
     }
 
     public function testIsContentReturnsTrueIfContentIsSame()
@@ -227,11 +230,11 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $content
         );
 
-        $this->assertTrue($token->isContent($content));
+        self::assertTrue($token->isContent($content));
     }
 
     public function testIsContentReturnsTrueIfOneContentIsSame()
@@ -242,7 +245,7 @@ final class TokenTest extends Framework\TestCase
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
-            T_STRING,
+            \T_STRING,
             $content
         );
 
@@ -252,6 +255,6 @@ final class TokenTest extends Framework\TestCase
             $faker->sentence(),
         ];
 
-        $this->assertTrue($token->isContent(...$contents));
+        self::assertTrue($token->isContent(...$contents));
     }
 }

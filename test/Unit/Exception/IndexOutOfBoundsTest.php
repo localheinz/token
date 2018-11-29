@@ -17,6 +17,9 @@ use Localheinz\Test\Util\Helper;
 use Localheinz\Token\Exception\IndexOutOfBounds;
 use PHPUnit\Framework;
 
+/**
+ * @internal
+ */
 final class IndexOutOfBoundsTest extends Framework\TestCase
 {
     use Helper;
@@ -38,7 +41,7 @@ final class IndexOutOfBoundsTest extends Framework\TestCase
             $index
         );
 
-        $this->assertInstanceOf(IndexOutOfBounds::class, $exception);
+        self::assertInstanceOf(IndexOutOfBounds::class, $exception);
 
         $message = \sprintf(
             'Index needs to be equal to or greater than "%d" and less than "%d", but "%d" is not.',
@@ -47,9 +50,9 @@ final class IndexOutOfBoundsTest extends Framework\TestCase
             $index
         );
 
-        $this->assertSame($message, $exception->getMessage());
-        $this->assertSame(0, $exception->getCode());
-        $this->assertSame($count, $exception->count());
-        $this->assertSame($index, $exception->index());
+        self::assertSame($message, $exception->getMessage());
+        self::assertSame(0, $exception->getCode());
+        self::assertSame($count, $exception->count());
+        self::assertSame($index, $exception->index());
     }
 }

@@ -67,7 +67,7 @@ final class Token
     {
         return new self(
             $index,
-            T_STRING,
+            \T_STRING,
             $string
         );
     }

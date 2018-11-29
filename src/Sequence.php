@@ -45,7 +45,7 @@ final class Sequence implements \Countable
     {
         return new self(\token_get_all(
             $source,
-            TOKEN_PARSE
+            \TOKEN_PARSE
         ));
     }
 
@@ -158,7 +158,7 @@ final class Sequence implements \Countable
         for ($current = $index + $direction; 0 <= $current && $current < $this->count; $current += $direction) {
             $token = $this->at($current);
 
-            if (!$token->isType(T_COMMENT, T_DOC_COMMENT, T_WHITESPACE)) {
+            if (!$token->isType(\T_COMMENT, \T_DOC_COMMENT, \T_WHITESPACE)) {
                 return $token;
             }
         }
