@@ -19,6 +19,9 @@ use Localheinz\Token\Sequence;
 use Localheinz\Token\Token;
 use PHPUnit\Framework;
 
+/**
+ * @internal
+ */
 final class SequenceTest extends Framework\TestCase
 {
     use Helper;
@@ -30,8 +33,8 @@ final class SequenceTest extends Framework\TestCase
 
     public function testConstants()
     {
-        $this->assertSame(-1, Sequence::DIRECTION_BACKWARD);
-        $this->assertSame(1, Sequence::DIRECTION_FORWARD);
+        self::assertSame(-1, Sequence::DIRECTION_BACKWARD);
+        self::assertSame(1, Sequence::DIRECTION_FORWARD);
     }
 
     public function testFromSourceReturnsSequenceOfTokens()
@@ -40,7 +43,7 @@ final class SequenceTest extends Framework\TestCase
 
         $sequence = Sequence::fromSource($source);
 
-        $this->assertInstanceOf(Sequence::class, $sequence);
+        self::assertInstanceOf(Sequence::class, $sequence);
     }
 
     public function testFromSourceUsesTokenParse()
@@ -61,15 +64,15 @@ PHP;
 
         $classTokens = [];
 
-        for ($index = 0; $index < $sequence->count(); ++$index) {
+        for ($index = 0; $sequence->count() > $index; ++$index) {
             $token = $sequence->at($index);
 
-            if ($token->isType(T_CLASS)) {
+            if ($token->isType(\T_CLASS)) {
                 $classTokens[] = $token;
             }
         }
 
-        $this->assertCount(1, $classTokens);
+        self::assertCount(1, $classTokens);
     }
 
     public function testCountReturnsNumberOfTokens()
@@ -77,13 +80,13 @@ PHP;
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
             $source,
-            TOKEN_PARSE
+            \TOKEN_PARSE
         );
         $count = \count($tokens);
 
         $sequence = Sequence::fromSource($source);
 
-        $this->assertCount($count, $sequence);
+        self::assertCount($count, $sequence);
     }
 
     /**
@@ -106,7 +109,7 @@ PHP;
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
             $source,
-            TOKEN_PARSE
+            \TOKEN_PARSE
         );
         $count = \count($tokens);
 
@@ -129,7 +132,7 @@ PHP;
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
             $source,
-            TOKEN_PARSE
+            \TOKEN_PARSE
         );
 
         $sequence = Sequence::fromSource($source);
@@ -144,7 +147,7 @@ PHP;
             $tokens[$index]
         );
 
-        $this->assertEquals($expectedToken, $sequence->at($index));
+        self::assertEquals($expectedToken, $sequence->at($index));
     }
 
     /**
@@ -200,7 +203,7 @@ PHP;
 
         $token = $sequence->significantBefore($index);
 
-        $this->assertEquals($sequence->at($indexSignificantBefore), $token);
+        self::assertEquals($sequence->at($indexSignificantBefore), $token);
     }
 
     public function providerSignificantBefore(): \Generator
@@ -310,7 +313,7 @@ PHP;
 
         $tokens = \token_get_all(
             $source,
-            TOKEN_PARSE
+            \TOKEN_PARSE
         );
 
         $indexes = [
@@ -339,7 +342,7 @@ PHP;
 
         $token = $sequence->significantAfter($index);
 
-        $this->assertEquals($sequence->at($indexSignificantAfter), $token);
+        self::assertEquals($sequence->at($indexSignificantAfter), $token);
     }
 
     public function providerSignificantAfter(): \Generator

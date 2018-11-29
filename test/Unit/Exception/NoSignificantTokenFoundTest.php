@@ -18,6 +18,9 @@ use Localheinz\Token\Exception\NoSignificantTokenFound;
 use Localheinz\Token\Sequence;
 use PHPUnit\Framework;
 
+/**
+ * @internal
+ */
 final class NoSignificantTokenFoundTest extends Framework\TestCase
 {
     use Helper;
@@ -42,17 +45,17 @@ final class NoSignificantTokenFoundTest extends Framework\TestCase
             $index
         );
 
-        $this->assertInstanceOf(NoSignificantTokenFound::class, $exception);
+        self::assertInstanceOf(NoSignificantTokenFound::class, $exception);
 
         $message = \sprintf(
             $format,
             $index
         );
 
-        $this->assertSame($message, $exception->getMessage());
-        $this->assertSame(0, $exception->getCode());
-        $this->assertSame($direction, $exception->direction());
-        $this->assertSame($index, $exception->index());
+        self::assertSame($message, $exception->getMessage());
+        self::assertSame(0, $exception->getCode());
+        self::assertSame($direction, $exception->direction());
+        self::assertSame($index, $exception->index());
     }
 
     public function providerDirectionAndFormat(): \Generator

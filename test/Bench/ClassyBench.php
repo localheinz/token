@@ -25,7 +25,7 @@ final class ClassyBench
     {
         \token_get_all(
             $this->source(),
-            TOKEN_PARSE
+            \TOKEN_PARSE
         );
     }
 
