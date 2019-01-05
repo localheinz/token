@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2017 Andreas Möller.
+ * Copyright (c) 2017 Andreas Möller
  *
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
@@ -21,7 +21,7 @@ final class ClassyBench
     /**
      * @Revs(100)
      */
-    public function benchTokenGetAllFromSource()
+    public function benchTokenGetAllFromSource(): void
     {
         \token_get_all(
             $this->source(),
@@ -32,7 +32,7 @@ final class ClassyBench
     /**
      * @Revs(100)
      */
-    public function benchSequenceFromSource()
+    public function benchSequenceFromSource(): void
     {
         Sequence::fromSource($this->source());
     }

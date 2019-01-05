@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2017 Andreas Möller.
+ * Copyright (c) 2017 Andreas Möller
  *
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
@@ -24,7 +24,7 @@ final class TokenTest extends Framework\TestCase
 {
     use Helper;
 
-    public function testFromTypeAndContentReturnsToken()
+    public function testFromTypeAndContentReturnsToken(): void
     {
         $faker = $this->faker();
 
@@ -45,7 +45,7 @@ final class TokenTest extends Framework\TestCase
         self::assertSame($content, $token->content());
     }
 
-    public function testFromStringReturnsToken()
+    public function testFromStringReturnsToken(): void
     {
         $faker = $this->faker();
 
@@ -71,7 +71,7 @@ final class TokenTest extends Framework\TestCase
      * @param array|string $value
      * @param Token        $expected
      */
-    public function testFromValueReturnsToken(int $index, $value, Token $expected)
+    public function testFromValueReturnsToken(int $index, $value, Token $expected): void
     {
         $token = Token::fromValue(
             $index,
@@ -119,7 +119,7 @@ final class TokenTest extends Framework\TestCase
         }
     }
 
-    public function testIsTypeReturnsFalseIfTypeIsDifferent()
+    public function testIsTypeReturnsFalseIfTypeIsDifferent(): void
     {
         $faker = $this->faker();
 
@@ -134,7 +134,7 @@ final class TokenTest extends Framework\TestCase
         self::assertFalse($token->isType($type));
     }
 
-    public function testIsTypeReturnsFalseIfAllTypesAreDifferent()
+    public function testIsTypeReturnsFalseIfAllTypesAreDifferent(): void
     {
         $faker = $this->faker();
 
@@ -153,7 +153,7 @@ final class TokenTest extends Framework\TestCase
         self::assertFalse($token->isType(...$types));
     }
 
-    public function testIsTypeReturnsTrueIfTypeIsSame()
+    public function testIsTypeReturnsTrueIfTypeIsSame(): void
     {
         $faker = $this->faker();
 
@@ -168,7 +168,7 @@ final class TokenTest extends Framework\TestCase
         self::assertTrue($token->isType($type));
     }
 
-    public function testIsTypeReturnsTrueIfOneTypeIsSame()
+    public function testIsTypeReturnsTrueIfOneTypeIsSame(): void
     {
         $faker = $this->faker();
 
@@ -188,7 +188,7 @@ final class TokenTest extends Framework\TestCase
         self::assertTrue($token->isType(...$types));
     }
 
-    public function testIsContentReturnsFalseIfContentIsDifferent()
+    public function testIsContentReturnsFalseIfContentIsDifferent(): void
     {
         $faker = $this->faker();
 
@@ -203,7 +203,7 @@ final class TokenTest extends Framework\TestCase
         self::assertFalse($token->isContent($content));
     }
 
-    public function testIsContentReturnsFalseIfAllContentsAreDifferent()
+    public function testIsContentReturnsFalseIfAllContentsAreDifferent(): void
     {
         $faker = $this->faker();
 
@@ -222,7 +222,7 @@ final class TokenTest extends Framework\TestCase
         self::assertFalse($token->isContent(...$contents));
     }
 
-    public function testIsContentReturnsTrueIfContentIsSame()
+    public function testIsContentReturnsTrueIfContentIsSame(): void
     {
         $faker = $this->faker();
 
@@ -237,7 +237,7 @@ final class TokenTest extends Framework\TestCase
         self::assertTrue($token->isContent($content));
     }
 
-    public function testIsContentReturnsTrueIfOneContentIsSame()
+    public function testIsContentReturnsTrueIfOneContentIsSame(): void
     {
         $faker = $this->faker();
 
