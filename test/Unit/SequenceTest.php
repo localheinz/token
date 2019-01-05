@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2017 Andreas Möller.
+ * Copyright (c) 2017 Andreas Möller
  *
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
@@ -26,18 +26,18 @@ final class SequenceTest extends Framework\TestCase
 {
     use Helper;
 
-    public function testImplementsCountableInterface()
+    public function testImplementsCountableInterface(): void
     {
         $this->assertClassImplementsInterface(\Countable::class, Sequence::class);
     }
 
-    public function testConstants()
+    public function testConstants(): void
     {
         self::assertSame(-1, Sequence::DIRECTION_BACKWARD);
         self::assertSame(1, Sequence::DIRECTION_FORWARD);
     }
 
-    public function testFromSourceReturnsSequenceOfTokens()
+    public function testFromSourceReturnsSequenceOfTokens(): void
     {
         $source = \file_get_contents(__FILE__);
 
@@ -46,7 +46,7 @@ final class SequenceTest extends Framework\TestCase
         self::assertInstanceOf(Sequence::class, $sequence);
     }
 
-    public function testFromSourceUsesTokenParse()
+    public function testFromSourceUsesTokenParse(): void
     {
         $source = <<<'PHP'
 <?php
@@ -75,7 +75,7 @@ PHP;
         self::assertCount(1, $classTokens);
     }
 
-    public function testCountReturnsNumberOfTokens()
+    public function testCountReturnsNumberOfTokens(): void
     {
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
@@ -95,7 +95,7 @@ PHP;
      * @param string $source
      * @param int    $index
      */
-    public function testAtThrowsIndexOutOfBoundsIfIndexIsOutOfBounds(string $source, int $index)
+    public function testAtThrowsIndexOutOfBoundsIfIndexIsOutOfBounds(string $source, int $index): void
     {
         $sequence = Sequence::fromSource($source);
 
@@ -127,7 +127,7 @@ PHP;
         }
     }
 
-    public function testAtReturnsTokenAtIndex()
+    public function testAtReturnsTokenAtIndex(): void
     {
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
@@ -156,7 +156,7 @@ PHP;
      * @param string $source
      * @param int    $index
      */
-    public function testSignificantBeforeThrowsIndexOutOfBoundsIfIndexIsOutOfBounds(string $source, int $index)
+    public function testSignificantBeforeThrowsIndexOutOfBoundsIfIndexIsOutOfBounds(string $source, int $index): void
     {
         $sequence = Sequence::fromSource($source);
 
@@ -165,7 +165,7 @@ PHP;
         $sequence->significantBefore($index);
     }
 
-    public function testSignificantBeforeThrowsNoSignificantTokenFoundIfNoSignificantTokenFound()
+    public function testSignificantBeforeThrowsNoSignificantTokenFoundIfNoSignificantTokenFound(): void
     {
         $source = <<<'PHP'
 <?php
@@ -197,7 +197,7 @@ PHP;
      * @param int    $index
      * @param int    $indexSignificantBefore
      */
-    public function testSignificantBeforeReturnsSignificantTokenBeforeIndex(string $source, int $index, int $indexSignificantBefore)
+    public function testSignificantBeforeReturnsSignificantTokenBeforeIndex(string $source, int $index, int $indexSignificantBefore): void
     {
         $sequence = Sequence::fromSource($source);
 
@@ -269,7 +269,7 @@ PHP;
      * @param string $source
      * @param int    $index
      */
-    public function testSignificantAfterThrowsIndexOutOfBoundsIfIndexIsOutOfBounds(string $source, int $index)
+    public function testSignificantAfterThrowsIndexOutOfBoundsIfIndexIsOutOfBounds(string $source, int $index): void
     {
         $sequence = Sequence::fromSource($source);
 
@@ -284,7 +284,7 @@ PHP;
      * @param string $source
      * @param int    $index
      */
-    public function testSignificantAfterThrowsNoSignificantTokenFoundIfNoSignificantTokenFound(string $source, int $index)
+    public function testSignificantAfterThrowsNoSignificantTokenFoundIfNoSignificantTokenFound(string $source, int $index): void
     {
         $sequence = Sequence::fromSource($source);
 
@@ -336,7 +336,7 @@ PHP;
      * @param int    $index
      * @param int    $indexSignificantAfter
      */
-    public function testSignificantAfterReturnsSignificantTokenAfterIndex(string $source, int $index, int $indexSignificantAfter)
+    public function testSignificantAfterReturnsSignificantTokenAfterIndex(string $source, int $index, int $indexSignificantAfter): void
     {
         $sequence = Sequence::fromSource($source);
 

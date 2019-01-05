@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2017 Andreas Möller.
+ * Copyright (c) 2017 Andreas Möller
  *
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
@@ -24,12 +24,12 @@ final class IndexOutOfBoundsTest extends Framework\TestCase
 {
     use Helper;
 
-    public function testExtendsOutOfBoundsException()
+    public function testExtendsOutOfBoundsException(): void
     {
         $this->assertClassExtends(\OutOfBoundsException::class, IndexOutOfBounds::class);
     }
 
-    public function testFromCountAndIndexReturnsException()
+    public function testFromCountAndIndexReturnsException(): void
     {
         $faker = $this->faker();
 

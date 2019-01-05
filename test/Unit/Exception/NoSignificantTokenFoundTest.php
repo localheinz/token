@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2017 Andreas Möller.
+ * Copyright (c) 2017 Andreas Möller
  *
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
@@ -25,7 +25,7 @@ final class NoSignificantTokenFoundTest extends Framework\TestCase
 {
     use Helper;
 
-    public function testExtendsRuntimeException()
+    public function testExtendsRuntimeException(): void
     {
         $this->assertClassExtends(\RuntimeException::class, NoSignificantTokenFound::class);
     }
@@ -36,7 +36,7 @@ final class NoSignificantTokenFoundTest extends Framework\TestCase
      * @param int    $direction
      * @param string $format
      */
-    public function testInReturnsException(int $direction, string $format)
+    public function testInReturnsException(int $direction, string $format): void
     {
         $index = $this->faker()->randomNumber();
 
