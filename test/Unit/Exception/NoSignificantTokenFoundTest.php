@@ -20,6 +20,8 @@ use PHPUnit\Framework;
 
 /**
  * @internal
+ *
+ * @covers \Localheinz\Token\Exception\NoSignificantTokenFound
  */
 final class NoSignificantTokenFoundTest extends Framework\TestCase
 {

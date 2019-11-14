@@ -1,6 +1,6 @@
 # token
 
-[![Build Status](https://travis-ci.com/localheinz/token.svg?branch=master)](https://travis-ci.com/localheinz/token)
+[![CI Status](https://github.com/localheinz/token/workflows/Continuous%20Integration/badge.svg)](https://github.com/localheinz/token/actions)
 [![codecov](https://codecov.io/gh/localheinz/token/branch/master/graph/badge.svg)](https://codecov.io/gh/localheinz/token)
 [![Latest Stable Version](https://poser.pugx.org/localheinz/token/v/stable)](https://packagist.org/packages/localheinz/token)
 [![Total Downloads](https://poser.pugx.org/localheinz/token/downloads)](https://packagist.org/packages/localheinz/token)
@@ -81,6 +81,10 @@ var_dump($after->index()); // 12
 var_dump($after->isType(T_FUNCTION)); // true
 var_dump($after->isContent('function')); // true
 ```
+
+## Changelog
+
+Please have a look at [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Contributing
 

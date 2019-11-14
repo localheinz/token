@@ -21,6 +21,12 @@ use PHPUnit\Framework;
 
 /**
  * @internal
+ *
+ * @covers \Localheinz\Token\Sequence
+ *
+ * @uses \Localheinz\Token\Exception\IndexOutOfBounds
+ * @uses \Localheinz\Token\Exception\NoSignificantTokenFound
+ * @uses \Localheinz\Token\Token
  */
 final class SequenceTest extends Framework\TestCase
 {
@@ -39,6 +45,7 @@ final class SequenceTest extends Framework\TestCase
 
     public function testFromSourceReturnsSequenceOfTokens(): void
     {
+        /** @var string $source */
         $source = \file_get_contents(__FILE__);
 
         $sequence = Sequence::fromSource($source);
@@ -77,6 +84,7 @@ PHP;
 
     public function testCountReturnsNumberOfTokens(): void
     {
+        /** @var string $source */
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
             $source,
@@ -106,6 +114,7 @@ PHP;
 
     public function providerIndexOutOfBounds(): \Generator
     {
+        /** @var string $source */
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
             $source,
@@ -129,6 +138,7 @@ PHP;
 
     public function testAtReturnsTokenAtIndex(): void
     {
+        /** @var string $source */
         $source = \file_get_contents(__FILE__);
         $tokens = \token_get_all(
             $source,
