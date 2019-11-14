@@ -19,7 +19,7 @@ final class Sequence implements \Countable
     public const DIRECTION_BACKWARD = -1;
 
     /**
-     * @var Token[]
+     * @var array[]|string[]|Token[]
      */
     private $tokens;
 
@@ -67,14 +67,18 @@ final class Sequence implements \Countable
             );
         }
 
-        if (!$this->tokens[$index] instanceof Token) {
-            $this->tokens[$index] = Token::fromValue(
+        $token = $this->tokens[$index];
+
+        if (!$token instanceof Token) {
+            $token = Token::fromValue(
                 $index,
-                $this->tokens[$index]
+                $token
             );
+
+            $this->tokens[$index] = $token;
         }
 
-        return $this->tokens[$index];
+        return $token;
     }
 
     /**

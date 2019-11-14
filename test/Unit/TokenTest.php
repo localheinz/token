@@ -19,6 +19,8 @@ use PHPUnit\Framework;
 
 /**
  * @internal
+ *
+ * @covers \Localheinz\Token\Token
  */
 final class TokenTest extends Framework\TestCase
 {

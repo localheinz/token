@@ -19,6 +19,8 @@ use PHPUnit\Framework;
 
 /**
  * @internal
+ *
+ * @covers \Localheinz\Token\Exception\IndexOutOfBounds
  */
 final class IndexOutOfBoundsTest extends Framework\TestCase
 {

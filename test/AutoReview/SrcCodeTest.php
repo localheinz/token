@@ -11,34 +11,26 @@ declare(strict_types=1);
  * @see https://github.com/localheinz/token
  */
 
-namespace Localheinz\Token\Test\Unit;
+namespace Localheinz\Token\Test\AutoReview;
 
 use Localheinz\Test\Util\Helper;
 use PHPUnit\Framework;
 
 /**
  * @internal
+ *
+ * @coversNothing
  */
-final class ProjectCodeTest extends Framework\TestCase
+final class SrcCodeTest extends Framework\TestCase
 {
     use Helper;
 
-    public function testProductionClassesAreAbstractOrFinal(): void
-    {
-        $this->assertClassesAreAbstractOrFinal(__DIR__ . '/../../src');
-    }
-
-    public function testProductionClassesHaveTests(): void
+    public function testSrcClassesHaveUnitTests(): void
     {
         $this->assertClassesHaveTests(
             __DIR__ . '/../../src',
             'Localheinz\\Token\\',
             'Localheinz\\Token\\Test\\Unit\\'
         );
-    }
-
-    public function testTestClassesAreAbstractOrFinal(): void
-    {
-        $this->assertClassesAreAbstractOrFinal(__DIR__ . '/..');
     }
 }
