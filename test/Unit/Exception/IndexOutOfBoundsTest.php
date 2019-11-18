@@ -28,12 +28,12 @@ final class IndexOutOfBoundsTest extends Framework\TestCase
 
     public function testExtendsOutOfBoundsException(): void
     {
-        $this->assertClassExtends(\OutOfBoundsException::class, IndexOutOfBounds::class);
+        self::assertClassExtends(\OutOfBoundsException::class, IndexOutOfBounds::class);
     }
 
     public function testFromCountAndIndexReturnsException(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $count = $faker->randomNumber();
         $index = $faker->randomNumber();

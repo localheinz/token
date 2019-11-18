@@ -28,7 +28,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testFromTypeAndContentReturnsToken(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $index = $faker->randomNumber();
         $type = \T_STRING;
@@ -49,7 +49,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testFromStringReturnsToken(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $index = $faker->randomNumber();
         $content = $faker->sentence();
@@ -85,7 +85,7 @@ final class TokenTest extends Framework\TestCase
 
     public function providerFromValue(): \Generator
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $index = $faker->randomNumber();
         $type = \T_STRING;
@@ -123,7 +123,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsTypeReturnsFalseIfTypeIsDifferent(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
@@ -138,7 +138,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsTypeReturnsFalseIfAllTypesAreDifferent(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
@@ -157,7 +157,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsTypeReturnsTrueIfTypeIsSame(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
@@ -172,7 +172,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsTypeReturnsTrueIfOneTypeIsSame(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
@@ -192,7 +192,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsContentReturnsFalseIfContentIsDifferent(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
@@ -207,7 +207,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsContentReturnsFalseIfAllContentsAreDifferent(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $token = Token::fromTypeAndContent(
             $faker->randomNumber(),
@@ -226,7 +226,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsContentReturnsTrueIfContentIsSame(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $content = $faker->sentence();
 
@@ -241,7 +241,7 @@ final class TokenTest extends Framework\TestCase
 
     public function testIsContentReturnsTrueIfOneContentIsSame(): void
     {
-        $faker = $this->faker();
+        $faker = self::faker();
 
         $content = $faker->sentence();
 
