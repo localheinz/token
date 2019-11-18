@@ -34,7 +34,7 @@ final class SequenceTest extends Framework\TestCase
 
     public function testImplementsCountableInterface(): void
     {
-        $this->assertClassImplementsInterface(\Countable::class, Sequence::class);
+        self::assertClassImplementsInterface(\Countable::class, Sequence::class);
     }
 
     public function testConstants(): void
@@ -147,7 +147,7 @@ PHP;
 
         $sequence = Sequence::fromSource($source);
 
-        $index = $this->faker()->numberBetween(
+        $index = self::faker()->numberBetween(
             0,
             \count($tokens) - 1
         );

@@ -29,7 +29,7 @@ final class NoSignificantTokenFoundTest extends Framework\TestCase
 
     public function testExtendsRuntimeException(): void
     {
-        $this->assertClassExtends(\RuntimeException::class, NoSignificantTokenFound::class);
+        self::assertClassExtends(\RuntimeException::class, NoSignificantTokenFound::class);
     }
 
     /**
@@ -40,7 +40,7 @@ final class NoSignificantTokenFoundTest extends Framework\TestCase
      */
     public function testInReturnsException(int $direction, string $format): void
     {
-        $index = $this->faker()->randomNumber();
+        $index = self::faker()->randomNumber();
 
         $exception = NoSignificantTokenFound::in(
             $direction,
